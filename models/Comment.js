@@ -11,7 +11,8 @@ Comment.init(
     }
   },
   {
-    sequelize
+    sequelize,
+    timestamps: false
   }
 );
 
