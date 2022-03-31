@@ -20,7 +20,6 @@ const Posts = {
 //getting all db
 Posts.getAll()
   .then((posts) => {
-    console.log(posts);
     let textHtml = ""
     posts.forEach(post => {
       textHtml += `<hr>

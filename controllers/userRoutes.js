@@ -34,7 +34,6 @@ router.post("/users/register", async (req, res) => {
   try {
     const data = req.body;
     data.password = await bcrypt.hash(req.body.password, 10);
-    console.log(data);
     const user = await User.create(data);
     res.status(200).json(user);
   } catch (err) {
@@ -42,13 +41,15 @@ router.post("/users/register", async (req, res) => {
   }
 });
 
-router.post('/users/logout', (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
+router.post("/users/logout", (req, res) => {
+  console.log(req.body);
+  if (req.body === true) {
+    req.body.destroy(() => {
+      res.status(400);
     });
   } else {
-    res.status(404).end();
+    res.status(500);
   }
 });
+
 module.exports = router;

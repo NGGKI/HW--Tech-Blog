@@ -12,7 +12,7 @@ router.get('/posts', async (req, res) => {
 router.post("/posts", async (req, res) => {
   try {
     const post = await Post.create(req.body);
-    console.log(post);
+    
     res.status(200).json(post);
   } catch (err) {
     res

@@ -1,0 +1,14 @@
+#dashboard{
+  text-align: center;    
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 55vh;
+  width: 100vh;
+  margin-left: 50vh;
+  border: none;
+}
+
+.container{
+  margin-left: 70vh;
+}
