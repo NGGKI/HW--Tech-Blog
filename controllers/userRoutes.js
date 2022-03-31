@@ -30,33 +30,25 @@ router.post("/users/login", async ({ body: { username, password } }, res) => {
 });
 
 // create a username and password
-router.post("/users", async (req, res) => {
+router.post("/users/register", async (req, res) => {
   try {
     const data = req.body;
     data.password = await bcrypt.hash(req.body.password, 10);
+    console.log(data);
     const user = await User.create(data);
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json(err);
   }
 });
-//change password and username
-router.put("/users/:id", async ({ body, params: { id } }, res) => {
-  try {
-    const user = await User.update(body, {
-      where: { id },
-      individualHooks: true,
+
+router.post('/users/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
     });
-
-    if (!user[0]) {
-      res.status(404).json({ message: "No user with this id." });
-      return;
-    }
-
-    res.status(200).json(user);
-  } catch (err) {
-    res.status(500).json(err);
+  } else {
+    res.status(404).end();
   }
 });
-
 module.exports = router;

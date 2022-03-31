@@ -1,5 +1,6 @@
 require("dotenv").config;
 
+
 const express = require("express");
 const { join } = require("path");
 
@@ -13,7 +14,7 @@ app.use(require('./controllers'))
 
 async function init() {
   await require("./config/connection").sync();
-  app.listen(process.env.PORT || 3000);
+  app.listen(process.env.PORT || 3001);
 }
 
 init();
