@@ -1,3 +1,5 @@
+const form = document.getElementById("dashboard");
+
 document.getElementById("addform").addEventListener("click", async (event) => {
   event.preventDefault();
 
@@ -14,7 +16,8 @@ document.getElementById("addform").addEventListener("click", async (event) => {
   });
 
   if (response.ok) {
-    alert("Oke");
+    alert("Check out at home to see your post");
+    form.reset();
   } else {
     alert("not OKE");
   }
