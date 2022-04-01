@@ -21,7 +21,7 @@ app.use(session(sess));
 app.use(require("./controllers"));
 
 async function init() {
-  await require("./config/connection").sync({ force: true });
+  await require("./config/connection").sync();
   app.listen(process.env.PORT || 3001);
 }
 
