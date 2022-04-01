@@ -14,7 +14,7 @@ document.getElementById("login").addEventListener("click", async (event) => {
   });
 
   if (response.ok) {
-    document.location.replace("/home.html");
+    document.location.replace("/dashboard.html");
   } else {
     alert("Failed to login");
   }

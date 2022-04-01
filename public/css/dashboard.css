@@ -3,10 +3,13 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  height: 55vh;
+  height: 50vh;
   width: 100vh;
-  margin-left: 50vh;
   border: none;
+}
+
+#mainBox{
+
 }
 
 .container{
