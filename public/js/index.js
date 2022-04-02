@@ -1,5 +1,6 @@
 const form = document.getElementById("dashboard");
 
+//adding posts
 document.getElementById("addform").addEventListener("click", async (event) => {
   const newTitle = document.getElementById("title").value;
   const newContent = document.getElementById("description").value;
@@ -14,10 +15,10 @@ document.getElementById("addform").addEventListener("click", async (event) => {
   });
 
   if (response.ok) {
-    alert("Check out at home to see your post");
+    alert("Check below");
     form.reset();
   } else {
-    alert("not OKE");
+    alert("Try again");
   }
 });
 
@@ -29,7 +30,7 @@ const logout = async () => {
   });
 
   if (response.ok) {
-    document.location.replace("/");
+    document.location.replace("/index.html");
   } else {
     alert("Failed to log out.");
   }
@@ -38,24 +39,3 @@ const logout = async () => {
 document.getElementById("logout").addEventListener("click", logout);
 
 //getting bd from workbench
-const Posts = {
-  async getAll() {
-    const res = await fetch("/api/posts");
-    return res.json();
-  },
-};
-
-//getting all db
-Posts.getAll()
-  .then((posts) => {
-    let textHtml = "";
-    posts.forEach((post) => {
-      textHtml += `<hr>
-        <h3>Title: ${post.title}</h3>
-        <p>Description: ${post.body}</p>
-        
-        <hr>`;
-    });
-    document.getElementById("posts").innerHTML = textHtml;
-  })
-  .catch((err) => console.log(err));
