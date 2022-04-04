@@ -10,6 +10,7 @@ document.getElementById("addform").addEventListener("click", async (event) => {
     body: JSON.stringify({
       title: newTitle,
       body: newContent,
+      userId: localStorage.getItem("userId"),
     }),
     headers: { "Content-Type": "application/json" },
   });

@@ -2,7 +2,7 @@ document.getElementById("login").addEventListener("click", async (event) => {
   event.preventDefault();
 
   const username = document.getElementById("username");
-  const password = document.getElementById("password");
+  const passwordnode = document.getElementById("password");
 
   const response = await fetch("/api/users/login", {
     method: "POST",
@@ -14,8 +14,11 @@ document.getElementById("login").addEventListener("click", async (event) => {
   });
 
   if (response.ok) {
+    const data = await response.json();
+    localStorage.setItem("userId", data.user.id);
     document.location.replace("/dashboard.html");
   } else {
     alert("Failed to login");
   }
 });
+

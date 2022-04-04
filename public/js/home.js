@@ -17,26 +17,30 @@ const Comment = {
 //getting all db
 Post.getAll()
   .then((posts) => {
+    console.log(posts[0].Comments[0].body);
     let textHtml = "";
     posts.forEach((post) => {
       textHtml += `<hr>
         <h3>Title: ${post.title}</h3>
         <p>Description: ${post.body}</p>
-        <p>Description: ${post.body}</p>
+        <p>Comment: ${posts[0].Comments[0].body}</p>
         <input id="comment" type="text">
-        <button id="addComment">Add Comment</button>
+        <button class=${post.id} id="addComment">Add Comment</button>
         <hr>`;
     });
+    //getting all button work
     document.getElementById("posts").innerHTML = textHtml;
     document
       .getElementById("addComment")
       .addEventListener("click", async (event) => {
+        const postId = event.target.className;
         const newComment = document.getElementById("comment").value;
-        console.log(newComment);
         const response = await fetch("/api/comments", {
           method: "POST",
           body: JSON.stringify({
             body: newComment,
+            userId: localStorage.getItem("userId"),
+            postId: postId,
           }),
           headers: { "Content-Type": "application/json" },
         });
@@ -46,6 +50,5 @@ Post.getAll()
           alert("Try again");
         }
       });
-  
   })
   .catch((err) => console.log(err));
