@@ -17,7 +17,6 @@ const Comment = {
 //getting all db
 Post.getAll()
   .then((posts) => {
-    console.log(posts[0].Comments[0].body);
     let textHtml = "";
     posts.forEach((post) => {
       textHtml += `<hr>
