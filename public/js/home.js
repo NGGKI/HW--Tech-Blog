@@ -19,10 +19,11 @@ Post.getAll()
   .then((posts) => {
     let textHtml = "";
     posts.forEach((post) => {
+      const comment = post.Comments.length ? post.Comments[0].body : "";
       textHtml += `<hr>
         <h3>Title: ${post.title}</h3>
         <p>Description: ${post.body}</p>
-        <p>Comment: ${posts[0].Comments[0].body}</p>
+        <p>Comment: ${comment}</p>
         <input id="comment" type="text">
         <button class=${post.id} id="addComment">Add Comment</button>
         <hr>`;
